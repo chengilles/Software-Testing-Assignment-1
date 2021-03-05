@@ -3,12 +3,14 @@ package books;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * TODO : Add your import here
  */
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BookShopTest {
 
     /**
@@ -19,7 +21,7 @@ public class BookShopTest {
 
     @BeforeAll
     public void setUp(){
-        BookShop shop = new BookShop("Harry Potter Shop");
+        shop = new BookShop("Harry Potter Shop");
     }
 
 
@@ -51,6 +53,16 @@ public class BookShopTest {
         // Test should result a total of 26 + 144 = 170
 
         assertTrue(shop.cost(books) == 170);
+    }
+
+    @Test
+    public void Two_Reduction(){
+        int[] books = {15,0,9,0,0};
+        // 2 Different Books -> Discount of 7%
+        // 2*8 * 0,93 = 14,88 ----- Overflowing books = (14 + 0 + 8 + 0 + 0) * 8 = 176
+        // Test should result a total of 14,88 + 176 = 190,88
+
+        assertTrue(shop.cost(books) == 190.88);
     }
 
     @AfterAll
