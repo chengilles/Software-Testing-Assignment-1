@@ -50,6 +50,6 @@ public class BookShop {
             default:
                 break;
         }
-        return total + reducedTotal;
+        return Math.round((total + reducedTotal)*100.0)/100.0; //Round to 2 decimal places
     }
 }
