@@ -18,7 +18,38 @@ public class BookShop {
      * @return the cost in euro with the discount
      */
     public double cost(int[] books){
-        //TODO complete
-        return 0.0;
+        int count = 0;
+        double total = 0;
+        double reducedTotal = 0;
+
+        for(int i = 0; i < books.length; i++){
+            if(books[i] > 0){
+                count++;
+                if(books[i] == 1){
+                    reducedTotal+= 8;
+                } else {
+                    reducedTotal+= 8;
+                    total += (books[i] - 1) * 8;
+                }
+            }
+        }
+
+        switch(count){
+            case 2:
+                reducedTotal *= 0.93;
+                break;
+            case 3:
+                reducedTotal *= 0.86;
+                break;
+            case 4:
+                reducedTotal *= 0.72;
+                break;
+            case 5:
+                reducedTotal *= 0.65;
+                break;
+            default:
+                break;
+        }
+        return total + reducedTotal;
     }
 }
