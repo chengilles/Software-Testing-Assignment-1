@@ -65,6 +65,16 @@ public class BookShopTest {
         assertTrue(shop.cost(books) == 190.88);
     }
 
+    @Test
+    public void No_Reduction(){
+        int[] books = {5,0,0,0,0};
+        // 1 Book only -> No discount
+        // 5 * 8 = 40
+        // Test should result a total of 40
+
+        assertTrue(shop.cost(books) == 40);
+    }
+
     @AfterAll
     public void tearDown(){
         shop = null;
